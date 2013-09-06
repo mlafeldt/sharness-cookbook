@@ -9,3 +9,5 @@ recipe            "sharness::default", "Installs Sharness"
 
 supports "ubuntu"
 supports "debian"
+
+depends "git"

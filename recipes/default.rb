@@ -17,3 +17,22 @@
 # limitations under the License.
 #
 
+tmp_dir = File.join(Chef::Config[:file_cache_path], 'sharness')
+
+directory tmp_dir do
+  recursive true
+  action :create
+  not_if "test -d #{tmp_dir}"
+end
+
+git tmp_dir do
+  repository node['sharness']['git']['repo']
+  reference node['sharness']['git']['ref']
+  action :sync
+end
+
+execute 'install Sharness' do
+  user 'root'
+  cwd tmp_dir
+  command "make install prefix=#{node['sharness']['prefix']}"
+end

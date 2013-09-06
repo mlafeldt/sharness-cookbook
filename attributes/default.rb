@@ -17,3 +17,9 @@
 # limitations under the License.
 #
 
+sharness_version = '0.3.0'
+
+default['sharness']['version']     = sharness_version
+default['sharness']['git']['repo'] = 'git://github.com/mlafeldt/sharness.git'
+default['sharness']['git']['ref']  = "v#{sharness_version}"
+default['sharness']['prefix']      = '/usr/local'
