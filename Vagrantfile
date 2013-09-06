@@ -1,9 +1,9 @@
 # vi: set ft=ruby :
 
 Vagrant.configure('2') do |config|
-  config.vm.box       = 'jimdo-ubuntu-12.10'
-  config.vm.box_url   = 'https://jimdo-vagrant-boxes.s3.amazonaws.com/jimdo-ubuntu-12.10.box'
-  config.vm.host_name = 'sharness-ubuntu'
+  config.vm.box      = 'jimdo-ubuntu-12.10'
+  config.vm.box_url  = 'https://jimdo-vagrant-boxes.s3.amazonaws.com/jimdo-ubuntu-12.10.box'
+  config.vm.hostname = 'sharness-ubuntu'
 
   # Enable Berkshelf plugin which will make cookbooks available to Vagrant
   config.berkshelf.enabled = true
