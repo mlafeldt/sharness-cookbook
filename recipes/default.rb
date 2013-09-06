@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-tmp_dir = File.join(Chef::Config[:file_cache_path], 'sharness')
+tmp_dir = Chef::Config[:file_cache_path]
+tarball = File.join(tmp_dir, "sharness-#{node['sharness']['version']}.tar.gz")
 
 directory tmp_dir do
   recursive true
@@ -25,14 +26,24 @@ directory tmp_dir do
   not_if "test -d #{tmp_dir}"
 end
 
-git tmp_dir do
-  repository node['sharness']['git']['repo']
-  reference node['sharness']['git']['ref']
-  action :sync
+remote_file tarball do
+  source node['sharness']['url']
+  checksum node['sharness']['checksum']
+  mode '0644'
+  action :create
 end
 
-execute 'install Sharness' do
+package 'make'
+
+bash 'install sharness' do
   user 'root'
   cwd tmp_dir
-  command "make install prefix=#{node['sharness']['prefix']}"
+  flags '-e'
+  code <<-EOS
+    tar xzf #{tarball}
+    cd `tar -tf #{tarball} | head -n1`
+    make install prefix=#{node['sharness']['prefix']}
+    cd ..
+    rm -rf `tar -tf #{tarball} | head -n1`
+  EOS
 end

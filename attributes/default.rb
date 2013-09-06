@@ -19,7 +19,7 @@
 
 sharness_version = '0.3.0'
 
-default['sharness']['version']     = sharness_version
-default['sharness']['git']['repo'] = 'git://github.com/mlafeldt/sharness.git'
-default['sharness']['git']['ref']  = "v#{sharness_version}"
-default['sharness']['prefix']      = '/usr/local'
+default['sharness']['version']  = sharness_version
+default['sharness']['url']      = "https://github.com/mlafeldt/sharness/tarball/v#{sharness_version}"
+default['sharness']['checksum'] = '3314981ebf48'
+default['sharness']['prefix']   = '/usr/local'
