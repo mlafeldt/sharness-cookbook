@@ -1,30 +1,41 @@
 Sharness Cookbook
 =================
 
-This cookbook installs [Sharness].
+This cookbook installs [Sharness], the "Shell library to test your Unix tools
+like Git does".
 
 Requirements
 ------------
 
 ### Platform:
 
-*List supported platforms here*
+* Ubuntu
+* Debian
+* probably many more
 
 ### Cookbooks:
 
-*List cookbook dependencies here*
+No dependencies
 
 Attributes
 ----------
 
-*List attributes here*
+* `default['sharness']['version']` - The version of Sharness to install.
+* `default['sharness']['url']` - URL to download Sharness source tarball from.
+* `default['sharness']['checksum']` - Checksum of source tarball.
+* `default['sharness']['prefix']` - Path prefix for installation.
+
+See `attributes/default.rb` for default values.
 
 Recipes
 -------
 
 ### sharness::default
 
-Installs Sharness
+Installs Sharness.
+
+This recipe can be run without any configuration. You might want to set
+`node['sharness']['version']` to a specific version of Sharness to install.
 
 Testing
 -------
