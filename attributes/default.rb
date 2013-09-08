@@ -17,9 +17,7 @@
 # limitations under the License.
 #
 
-sharness_version = '0.3.0'
-
-default['sharness']['version']  = sharness_version
-default['sharness']['url']      = "https://github.com/mlafeldt/sharness/tarball/v#{sharness_version}"
+default['sharness']['version']  = '0.3.0'
+default['sharness']['url']      = "https://github.com/mlafeldt/sharness/tarball/v#{node['sharness']['version']}"
 default['sharness']['checksum'] = '3314981ebf48'
 default['sharness']['prefix']   = '/usr/local'
