@@ -31,4 +31,9 @@ describe 'The recipe sharness::default' do
   it 'installs sharness' do
     chef_run.should execute_bash_script 'install sharness'
   end
+
+  it 'sets up environment variables' do
+    content = "export SHARNESS_PATH=\"#{chef_run.node['sharness']['path']}\""
+    chef_run.should create_file_with_content '/etc/profile.d/sharness.sh', content
+  end
 end

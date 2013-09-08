@@ -20,10 +20,11 @@ No dependencies
 Attributes
 ----------
 
-* `default['sharness']['version']` - The version of Sharness to install.
-* `default['sharness']['url']` - URL to download Sharness source tarball from.
-* `default['sharness']['checksum']` - Checksum of source tarball.
-* `default['sharness']['prefix']` - Path prefix for installation.
+* `node['sharness']['version']` - The version of Sharness to install.
+* `node['sharness']['url']` - URL to download Sharness source tarball from.
+* `node['sharness']['checksum']` - Checksum of source tarball.
+* `node['sharness']['prefix']` - Path prefix for installation.
+* `node['sharness']['path']` - Path to directory that holds Sharness library.
 
 See `attributes/default.rb` for default values.
 
@@ -35,7 +36,18 @@ Recipes
 Installs Sharness.
 
 This recipe can be run without any configuration. You might want to set
-`node['sharness']['version']` to a specific version of Sharness to install.
+`node['sharness']['version']` to install a specific version of Sharness.
+
+The recipe also sets up the environment variable `SHARNESS_PATH` to point to
+`node['sharness']['path']`, so you can easily source Sharness inside your tests:
+
+```sh
+#!/bin/sh
+
+test_description="Some example test"
+
+. "$SHARNESS_PATH/sharness.sh"
+```
 
 Testing
 -------

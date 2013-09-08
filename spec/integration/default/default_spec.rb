@@ -15,6 +15,10 @@ describe 'sharness::default' do
     expect(file "#{prefix}/share/doc/sharness/README.md").to be_file
   end
 
+  it 'sets up environment variables' do
+    expect(file "/etc/profile.d/sharness.sh").to be_file
+  end
+
   context 'test examples' do
     let (:examples) { "#{prefix}/share/doc/sharness/examples" }
 

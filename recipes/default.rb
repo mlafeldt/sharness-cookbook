@@ -47,3 +47,13 @@ bash 'install sharness' do
     rm -rf `tar -tf #{tarball} | head -n1`
   EOS
 end
+
+template '/etc/profile.d/sharness.sh' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  action :create
+  variables(
+    :sharness_path => node['sharness']['path']
+  )
+end
