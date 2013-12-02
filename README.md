@@ -52,10 +52,16 @@ test_description="Some example test"
 Testing
 -------
 
-This cookbook utilizes [chef-bones] for testing. Everything you need to know
-about testing this cookbook is explained [here][chef-bones-testing].
-
 [![Build Status](https://travis-ci.org/mlafeldt/sharness-cookbook.png?branch=master)](https://travis-ci.org/mlafeldt/sharness-cookbook)
+
+The cookbook provides the following Rake tasks for testing:
+
+    rake integration                  # Alias for kitchen:all
+    rake kitchen:all                  # Run all test instances
+    rake kitchen:default-ubuntu-1204  # Run default-ubuntu-1204 test instance
+    rake lint                         # Lint Chef cookbooks
+    rake spec                         # Run ChefSpec examples
+    rake test                         # Run all tests
 
 License and Author
 ------------------
@@ -87,5 +93,3 @@ Contributing
 
 
 [Sharness]: https://github.com/mlafeldt/sharness
-[chef-bones-testing]: https://github.com/mlafeldt/chef-bones/blob/master/TESTING.md
-[chef-bones]: https://github.com/mlafeldt/chef-bones
