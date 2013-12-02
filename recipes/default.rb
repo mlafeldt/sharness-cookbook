@@ -23,7 +23,6 @@ tarball = File.join(tmp_dir, "sharness-#{node['sharness']['version']}.tar.gz")
 directory tmp_dir do
   recursive true
   action :create
-  not_if "test -d #{tmp_dir}"
 end
 
 remote_file tarball do
