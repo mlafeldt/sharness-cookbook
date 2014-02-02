@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "sharness::default" do
-  let (:prefix) { "/usr/local" }
+  let(:prefix) { "/usr/local" }
 
   it "installs sharness library" do
     expect(file "#{prefix}/share/sharness/sharness.sh").to be_file
@@ -20,7 +20,7 @@ describe "sharness::default" do
   end
 
   context "test examples" do
-    let (:examples) { "#{prefix}/share/doc/sharness/examples" }
+    let(:examples) { "#{prefix}/share/doc/sharness/examples" }
 
     it "are installed" do
       expect(file "#{examples}/Makefile").to be_file
