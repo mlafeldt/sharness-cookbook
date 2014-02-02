@@ -1,8 +1,8 @@
 require "spec_helper"
 
 describe "sharness::default" do
-  let (:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
-  let (:tmp_dir) { Chef::Config[:file_cache_path] }
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:tmp_dir) { Chef::Config[:file_cache_path] }
 
   before do
     stub_command("test -d #{tmp_dir}").and_return(true)
@@ -27,7 +27,8 @@ describe "sharness::default" do
   end
 
   it "sets up environment variable SHARNESS_PATH" do
-    expect(chef_run).to render_file("/etc/profile.d/sharness.sh").
-      with_content "export SHARNESS_PATH=\"#{chef_run.node["sharness"]["path"]}\""
+    content = "export SHARNESS_PATH=\"#{chef_run.node["sharness"]["path"]}\""
+    expect(chef_run).to render_file("/etc/profile.d/sharness.sh")
+      .with_content content
   end
 end
